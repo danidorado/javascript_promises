@@ -1,17 +1,26 @@
 
 import '../css/componente.css';
 
-export const saludar = (nombre) => {
-
-    const h1 = document.createElement('h2');
-
-    h1.innerHTML = `Hola, ${nombre}`;
-
-    document.body.append(h1);
-
-    const img = document.createElement('img');
-    img.src = 'assets/foto.jpg';
-    //document.body.append(img);
-
+const heroes = {
+    capi:{
+        nombre: 'Capitan America',
+        poder: 'fuerza',
+    },
+    iron:{
+        nombre: 'Ironman',
+        poder: 'dinero',
+    },
+    spider:{
+        nombre:'Spider Man',
+        poder:'flexible',
+    },
 }
 
+export const buscarHeroe = (id, callback) => {
+
+    const heroe = heroes[id];
+
+    // Controlamos los errores y si no hay error devolvemos null como primer argumento
+    (heroe) ? callback( null, heroe ) : callback( `No existe el id ${id}` );   
+
+}
